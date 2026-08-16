@@ -1,0 +1,16 @@
+# 构建产物
+dist/
+win-unpacked/
+
+# 依赖与运行时（resources/dsh 由构建流程从 DSH 安装目录复制，不入库）
+node_modules/
+resources/dsh/
+.electron-cache/
+
+# 日志与临时文件
+*.log
+*.tmp
+
+# 系统文件
+Thumbs.db
+.DS_Store

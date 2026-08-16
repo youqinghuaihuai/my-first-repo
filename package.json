@@ -1,0 +1,62 @@
+{
+  "name": "dsh-desktop",
+  "version": "0.1.0-rc.6",
+  "private": true,
+  "description": "DeepSeek Harness 桌面版：双击即可打开的独立 Windows 应用",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^35.7.5",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "ai.deepseek.harness.desktop",
+    "productName": "DeepSeek Harness",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/dsh",
+        "to": "dsh",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "electronDist": "node_modules/electron/dist",
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "signAndEditExecutable": false
+    },
+    "portable": {
+      "artifactName": "DeepSeekHarness.${ext}"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "artifactName": "DeepSeekHarness-Setup.${ext}",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "DeepSeek Harness",
+      "deleteAppDataOnUninstall": false
+    },
+    "compression": "maximum",
+    "npmRebuild": false
+  }
+}
